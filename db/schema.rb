@@ -24,11 +24,11 @@ ActiveRecord::Schema.define(version: 20150129052654) do
 
   create_table "products", force: :cascade do |t|
     t.string   "name"
-    t.decimal  "price"
+    t.decimal  "price",       precision: 8, scale: 2
     t.integer  "category_id"
     t.text     "description"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
   end
 
 end
