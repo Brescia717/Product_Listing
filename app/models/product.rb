@@ -11,4 +11,5 @@ class Product < ActiveRecord::Base
   def category
     Category.all.find(self.category_id).name
   end
+
 end
