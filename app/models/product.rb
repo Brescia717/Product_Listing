@@ -10,7 +10,10 @@ class Product < ActiveRecord::Base
 
   def self.search(search)
     if search
-      where('name iLIKE ?', "%#{search}%")
+      joins('join categories on categories.id=products.category_id')
+        .where('products.name iLIKE ?', "%#{search}%") ||
+      joins('join categories on categories.id=products.category_id')
+        .where('categories.name iLIKE ?', "%#{search}%")
     else
       default_scoped
     end

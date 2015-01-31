@@ -5,7 +5,11 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
-    @products = Product.search(params[:search]).includes(:category).order(sort_column + " " + sort_direction).page(params[:page]).per(10)
+    @products = Product.joins("join categories on categories.id=products.category_id")
+      .search(params[:search])
+      .includes(:category)
+      .order(sort_column + " " + sort_direction)
+      .page(params[:page]).per(10)
   end
 
   # GET /products/1
