@@ -74,11 +74,14 @@ class ProductsController < ApplicationController
     end
 
     def sort_column
-      params[:sort] || "name"
+      # params[:sort] || "name"
+      Product.column_names.include?(params[:sort]) ||
+      ["categories.name"].include?(params[:sort]) ? params[:sort] : "name"
     end
 
     def sort_direction
-      params[:direction] || "asc"
+      # params[:direction] || "asc"
+      %w[asc desc].include?(params[:direction]) ?  params[:direction] : "asc"
     end
 
 end
