@@ -71,4 +71,12 @@ class CategoriesController < ApplicationController
     def category_params
       params.require(:category).permit(:name)
     end
+
+    def sort_column
+      params[:sort] || "name"
+    end
+
+    def sort_direction
+      params[:direction] || "asc"
+    end
 end
