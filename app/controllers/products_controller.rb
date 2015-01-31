@@ -1,10 +1,15 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
+  helper_method :sort_column, :sort_direction
 
   # GET /products
   # GET /products.json
   def index
-    @products = Product.includes(:category).order(params[:sort])
+    @products = Product.joins("join categories on categories.id=products.category_id")
+      .search(params[:search])
+      .includes(:category)
+      .order(sort_column + " " + sort_direction)
+      .page(params[:page]).per(10)
   end
 
   # GET /products/1
@@ -70,6 +75,17 @@ class ProductsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
       params.require(:product).permit(:name, :price, :category_id, :description)
+    end
+
+    def sort_column
+      # params[:sort] || "name"
+      Product.column_names.include?(params[:sort]) ||
+      ["categories.name"].include?(params[:sort]) ? params[:sort] : "name"
+    end
+
+    def sort_direction
+      # params[:direction] || "asc"
+      %w[asc desc].include?(params[:direction]) ?  params[:direction] : "asc"
     end
 
 end
