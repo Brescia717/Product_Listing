@@ -8,8 +8,4 @@ class Product < ActiveRecord::Base
 
   belongs_to :category
 
-  def category
-    Category.all.find(self.category_id).name
-  end
-
 end

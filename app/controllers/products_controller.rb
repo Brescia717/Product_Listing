@@ -4,7 +4,7 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
-    @products = Product.order(params[:sort])
+    @products = Product.includes(:category).order(params[:sort])
   end
 
   # GET /products/1
