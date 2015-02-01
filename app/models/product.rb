@@ -18,5 +18,4 @@ class Product < ActiveRecord::Base
       default_scoped
     end
   end
-
 end

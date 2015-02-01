@@ -1,0 +1,26 @@
+{
+  "name": "Product_Listing",
+  "version": "0.0.0",
+  "dependencies": {
+    "chosen": "https://github.com/harvesthq/chosen/releases/download/v1.3.0/chosen_v1.3.0.zip",
+    "jquery": "latest",
+    "jquery-ujs": "~1.0.3"
+  },
+  "homepage": "https://github.com/Brescia717/Product_Listing",
+  "authors": [
+    "Paul Brescia <brescia717@gmail.com>"
+  ],
+  "moduleType": [
+    "globals"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "vendor/assets/components",
+    "test",
+    "tests"
+  ]
+}
