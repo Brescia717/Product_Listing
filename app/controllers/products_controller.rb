@@ -1,6 +1,7 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
   helper_method :sort_column, :sort_direction
+  respond_to :html, :js, :coffee
 
   # GET /products
   # GET /products.json
@@ -9,7 +10,7 @@ class ProductsController < ApplicationController
       .search(params[:search])
       .includes(:category)
       .order(sort_column + " " + sort_direction)
-      .page(params[:page]).per(10)
+      .page(params[:page]).per(3)
   end
 
   # GET /products/1
