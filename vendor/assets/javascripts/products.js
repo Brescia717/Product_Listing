@@ -3,11 +3,18 @@ $(function() {
     $.getScript(this.href);
     return false;
   });
-  $(".chosen-select").chosen();
   $("#products_search input").keyup(function() {
     $.get($("#products_search").attr("action"), $("#products_search").serialize(), null, "script");
     return false;
   });
+  $("select").change(function() {
+    var str = "";
+    $( "select option:selected" ).each(function() {
+      str += $( this ).text() + " ";
+    });
+    $( "#selected-categories" ).text( str );
+  })
+  .trigger( "change" );
 });
 // The coffee script version:
 // $ ->

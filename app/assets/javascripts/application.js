@@ -12,6 +12,9 @@
 //
 //= require jquery
 //= require jquery-ujs
-//= require chosen_v1.3.0/chosen.jquery.min.js
+// require chosen_v1.3.0/chosen.jquery.min.js
+// require chosen-jquery
+// require chosen.jquery
+//= require products_form
 //= require turbolinks
 //= require_tree .
