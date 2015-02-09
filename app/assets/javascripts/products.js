@@ -1,17 +1,30 @@
-// $(function() {
-//   $("#products th a, #products .pagination a").live("click", function() {
-//     $.getScript(this.href);
-//     return false;
-//   });
-//   $("#products_search input").keyup(function() {
-//     $.get($("#products_search").attr("action"), $("#products_search").serialize(), null, "script");
-//     return false;
-//   });
-// });
-//
-// The coffee script version:
-// $ ->
-//   $('#products th a').live 'click', ->
-//     $.getScript @href
-//     false
-//   return
+$(document).ready(function() {
+  $("#products th a, #products .pagination a").on("click", function() {
+    $.getScript(this.href);
+    return false;
+  });
+
+
+  // {
+  //   allow_single_deselect: true,
+  //   no_results_text: 'No results matched',
+  //   width: '200px'
+  // });
+
+  // $("p").hover(function() {
+  //   $(this).css("background", "red");
+  // }, function() {
+  //   $(this).css("background", "white");
+  // });
+
+  // $("#search").on("keyup click input", (function() {
+  //   if (this.value.length > 0) {
+  //     $("td").show().filter(function () {
+  //       return $(this).find(this.value)
+  //       .text().toLowerCase().indexOf($("#search").val().toLowerCase()) == -1;
+  //     }).hide();
+  //   } else {
+  //     $("td").show();
+  //   };
+  // });
+});
