@@ -1,17 +1,15 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Listing Products</h1>
-<%= form_tag products_path, method: "get", id: "categories_filter", remote: true do %>
-  <p>
-    <%= collection_select :search, params[:search], Category.all.order(:name), :id, :name %>
-    <%= submit_tag "Filter by category", :name => nil %>
-  </p>
-<% end %>
 
 <%= form_tag products_path, method: "get", id: "products_search", remote: true do %>
   <p>
+    <%= collection_select :filter, params[:filter], Category.all.order(:name), :id, :name,
+    {include_blank: true} %>
+  </p>
+  <p>
     <%= text_field_tag :search, params[:search] %>
-    <%= submit_tag "Search by product", :name => nil %>
+    <%= submit_tag "Search", :name => nil %>
   </p>
   <div id="products"><%= render partial: "products", remote: true %></div>
 <% end %>

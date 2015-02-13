@@ -8,16 +8,18 @@ class Product < ActiveRecord::Base
 
   belongs_to :category
 
-  def self.search(search)
-    join_categories = joins('join categories on categories.id=products.category_id')
+  def self.search(filter, search)
+    joins('join categories on categories.id=products.category_id')
 
-    if search.class == String
-      where('products.name iLIKE ?', "%#{search}%") ||
-      where('categories.name iLIKE ?', "%#{search}%")
-    elsif search.class == Array
-      where('categories.id= ?', search.first)
+    if filter && filter != [""] && search.length == 0
+      where('products.category_id=?', filter)
+    elsif filter === [""] && search && search.class == String
+      where('products.name iLIKE ?', "%#{search}%")
+    elsif filter && filter != [""] && search.length > 0
+      where('products.category_id=? AND products.name iLIKE ?', filter, "%#{search}%")
     else
       default_scoped
     end
   end
+
 end
